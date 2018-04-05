@@ -1,0 +1,42 @@
+{
+  "name": "wrap",
+  "version": "0.1.0",
+  "description": "Compose wrappers that chains props/setters/functions with ease",
+  "author": "Adriano Costa",
+  "bugs": "https://github.com/photonstorm/phaser/issues",
+  "license": "MIT",
+  "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
+  "repository": {
+    "type": "git",
+    "url": "https://photonstorm@github.com/photonstorm/phaser.git"
+  },
+  "main": "dist/wrix.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "mocha": "^5.0.5",
+    "standard": "^11.0.1",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-merge": "^4.1.2"
+  },
+  "scripts": {
+    "dev": "webpack --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "test": "mocha --require babel-core/register --grep dumb --invert",
+    "test:self": "mocha ./test/testSuite.js"
+  },
+  "keywords": [
+    "wrap",
+    "mix",
+    "compose",
+    "consume",
+    "chain",
+    "lib",
+    "javascript"
+  ]
+}
