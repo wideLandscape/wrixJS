@@ -1,14 +1,14 @@
 {
-  "name": "wrap",
+  "name": "wrixjs",
   "version": "0.1.0",
-  "description": "Compose wrappers that chains props/setters/functions with ease",
-  "author": "Adriano Costa",
-  "bugs": "https://github.com/photonstorm/phaser/issues",
+  "description": "Compose wrappers that mix and chains instances with ease",
+  "author": "Adriano Costa <iano76@gmail.com>",
+  "bugs": "https://github.com/wideLandscape/wrixJS/issues",
   "license": "MIT",
   "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
   "repository": {
     "type": "git",
-    "url": "https://photonstorm@github.com/photonstorm/phaser.git"
+    "url": "https://github.com/wideLandscape/wrixJS"
   },
   "main": "dist/wrix.js",
   "dependencies": {},
