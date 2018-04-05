@@ -12,15 +12,15 @@ TODO
 
 * Install node.js and npm: https://nodejs.org/en/
 
-### 1. Clone this repo:
+### Clone this repo:
 
 Navigate into your workspace directory.
 
 Run:
 
-```git clone https://github.com/wideLandscape/vue-phaser-starter```
+```git clone https://github.com/wideLandscape/wrixJS```
 
-### 2. Install dependencies:
+### Install dependencies:
 
 Navigate to the cloned repo's directory.
 
