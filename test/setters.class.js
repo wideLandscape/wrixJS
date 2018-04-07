@@ -1,5 +1,5 @@
 /* global describe it */
-import {Foo, Bar} from './common.class'
+import {Foo, Bar} from './common/class'
 var expect = require('chai').expect
 var Setters = require('../src/core/composers/Setters')
 describe('Setters', function () {
@@ -10,7 +10,7 @@ describe('Setters', function () {
         const setters = Setters.get(foo)
         expect(setters).to.be.a('array').with.lengthOf(2)
       })
-      it('expect to get setters array', function () {
+      it('expect to get inherited setters array', function () {
         const bar = new Bar()
         const setters = Setters.get(bar)
         expect(setters).to.be.a('array').with.lengthOf(3)

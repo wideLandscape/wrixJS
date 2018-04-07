@@ -1,5 +1,5 @@
 /* global describe it */
-import {createFoo, createBar} from './common.object'
+import {createFoo, createBar} from './common/object'
 var expect = require('chai').expect
 var Setters = require('../src/core/composers/Setters')
 describe('Setters', function () {
@@ -10,10 +10,10 @@ describe('Setters', function () {
         const setters = Setters.get(foo)
         expect(setters).to.be.a('array').with.lengthOf(2)
       })
-      it('expect to get setters array', function () {
+      it('expect to get setters array with __proto__', function () {
         const bar = createBar()
         const setters = Setters.get(bar)
-        expect(setters).to.be.a('array').with.lengthOf(3)
+        expect(setters).to.be.a('array').with.lengthOf(3).that.include('__proto__')
       })
     })
     describe('chain()', function () {
