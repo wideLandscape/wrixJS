@@ -1,3 +1,5 @@
+### this is a WIP, try it at your own risk
+
 # wrixJS
 
 Compose wrappers that mix and chains instances with ease.
