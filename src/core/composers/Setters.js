@@ -1,6 +1,8 @@
 import * as Configurables from './Configurables'
 import * as Shared from './shared'
 
+export { chain } from './Configurables'
+
 export const get = element => {
   let props = chainableSetters(element)
   let prototype = Object.getPrototypeOf(element)
@@ -11,12 +13,8 @@ export const get = element => {
   return props
 }
 
-export const chain = (...args) => {
-  return Configurables.chain(...args)
-}
-export const chainAll = (element, configurables = get(element), objectToChain = {}) => {
-  return Configurables.chainAll(element, configurables, objectToChain)
-}
+export const chainAll = (element, configurables = get(element), objectToChain = {}) =>
+  Configurables.chainAll(element, configurables, objectToChain)
 
 const chainableSetters = element =>
   Object.getOwnPropertyNames(element)

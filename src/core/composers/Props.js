@@ -1,6 +1,8 @@
 import * as Configurables from './Configurables'
 import * as Shared from './shared'
 
+export {chain} from './Configurables'
+
 export const get = (element = {}) => {
   let props = getProps(element)
   let prototype = Object.getPrototypeOf(element)
@@ -11,20 +13,13 @@ export const get = (element = {}) => {
   return props
 }
 
-export const chain = (...args) => {
-  return Configurables.chain(...args)
-}
-export const chainAll = (element, configurables = get(element), objectToChain = {}) => {
-  return Configurables.chainAll(element, configurables, objectToChain)
-}
+export const chainAll = (element, configurables = get(element), objectToChain = {}) =>
+  Configurables.chainAll(element, configurables, objectToChain)
 
 const getProps = element => Object.keys(element).filter(key => isSettable(key, element))
 
 const isSettable = (key, element) => {
   const descriptor = Object.getOwnPropertyDescriptor(element, key)
-  if (isValidDescriptor(descriptor)) {
-    return !Shared.isFunction(element[key])
-  }
-  return false
+  return isValidDescriptor(descriptor) ? !Shared.isFunction(element[key]) : false
 }
 const isValidDescriptor = descriptor => descriptor.configurable && !descriptor.get && !descriptor.set

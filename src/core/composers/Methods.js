@@ -17,12 +17,11 @@ export const chain = (context, functionName, objectToChain) => {
     return value === undefined ? objectToChain : value
   }
 }
-export const chainAll = (element, methods = get(element), objectToChain = {}) => {
-  return methods.reduce((acc, key) => {
+export const chainAll = (element, methods = get(element), objectToChain = {}) =>
+  methods.reduce((acc, key) => {
     acc[key] = chain(element, key, acc)
     return acc
   }, objectToChain)
-}
 
 const chainableMethods = prototype => availableMethods(prototype)
   .filter((p, i, arr) =>

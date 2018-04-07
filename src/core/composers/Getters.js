@@ -16,13 +16,11 @@ export const chain = (element, key, objToChain) => {
     }
   })
 }
-export const chainAll = (element, getters = get(element), objToChain = {}) => {
-  let test = getters.reduce((acc, key) => {
+export const chainAll = (element, getters = get(element), objToChain = {}) =>
+  getters.reduce((acc, key) => {
     chain(element, key, acc)
     return acc
   }, objToChain)
-  return test
-}
 
 const getGetters = element =>
   Object.getOwnPropertyNames(element)
