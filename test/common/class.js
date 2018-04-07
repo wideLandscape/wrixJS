@@ -38,4 +38,7 @@ export class Bar extends Foo {
     super.add(n)
     this.z += n
   }
+  sum () {
+    return this.x + this.y + this.z
+  }
 }

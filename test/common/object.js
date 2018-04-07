@@ -11,6 +11,10 @@ const fooPrototype = {
   },
   set value (val) {
     this._value = val
+  },
+  add (n) {
+    this.x += n
+    this.y += n
   }
 }
 export const createFoo = () => {
@@ -37,6 +41,9 @@ export const createBar = () => {
     this.x += n
     this.y += n
     this.z += n
+  }
+  obj.sum = function () {
+    return this.x + this.y + this.z
   }
   return obj
 }
