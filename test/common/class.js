@@ -11,7 +11,7 @@ export class Foo {
     return ({x: this.x, y: this.y})
   }
   set value (val) {
-    this.value = val
+    this._value = val
   }
 }
 export class Bar extends Foo {
