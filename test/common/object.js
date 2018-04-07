@@ -33,5 +33,10 @@ export const createBar = () => {
     set: function ({ x, y, z }) { this.xyz = { x, y, z } },
     get: function () { return this.xyz }
   })
+  obj.add = function (n) {
+    this.x += n
+    this.y += n
+    this.z += n
+  }
   return obj
 }

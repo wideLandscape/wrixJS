@@ -13,6 +13,10 @@ export class Foo {
   set value (val) {
     this._value = val
   }
+  add (n) {
+    this.x += n
+    this.y += n
+  }
 }
 export class Bar extends Foo {
   constructor () {
@@ -29,5 +33,9 @@ export class Bar extends Foo {
   }
   get xyz () {
     return ({ x: this.x, y: this.y, z: this.z })
+  }
+  add (n) {
+    super.add(n)
+    this.z += n
   }
 }
