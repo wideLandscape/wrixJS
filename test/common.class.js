@@ -10,8 +10,8 @@ export class Foo {
   get xy () {
     return ({x: this.x, y: this.y})
   }
-  get reversed () {
-    return ({x: this.y, y: this.x})
+  set value (val) {
+    this.value = val
   }
 }
 export class Bar extends Foo {

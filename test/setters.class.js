@@ -5,15 +5,15 @@ var Setters = require('../src/core/composers/Setters')
 describe('Setters', function () {
   describe('class object', function () {
     describe('get()', function () {
-      const foo = new Foo()
       it('expect to get setters array', function () {
+        const foo = new Foo()
         const setters = Setters.get(foo)
-        expect(setters).to.be.a('array')
+        expect(setters).to.be.a('array').with.lengthOf(2)
       })
       it('expect to get setters array', function () {
         const bar = new Bar()
         const setters = Setters.get(bar)
-        expect(setters).to.be.a('array')
+        expect(setters).to.be.a('array').with.lengthOf(3)
       })
     })
     describe('chain()', function () {

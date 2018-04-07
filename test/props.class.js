@@ -8,7 +8,7 @@ describe('Props', function () {
       const foo = new Foo()
       it('expect to get properties array', function () {
         const props = Props.get(foo)
-        expect(props).to.be.a('array')
+        expect(props).to.be.a('array').with.lengthOf(2)
       })
     })
     describe('chain()', function () {

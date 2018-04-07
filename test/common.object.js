@@ -14,9 +14,11 @@ const fooPrototype = {
   }
 }
 export const createFoo = () => {
+  // has no __proto__
   return Object.create(fooPrototype)
 }
 export const createBar = () => {
+  // has __proto__
   let obj = {x: 1, y: 1}
   obj.z = 1
   Object.defineProperty(obj, 'xyz', {

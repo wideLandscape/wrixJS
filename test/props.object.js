@@ -5,10 +5,10 @@ var Props = require('../src/core/composers/Props')
 describe('Props', function () {
   describe('simple object', function () {
     describe('get()', function () {
-      const foo = createFoo()
       it('expect to get properties array', function () {
+        const foo = createFoo()
         const props = Props.get(foo)
-        expect(props).to.be.a('array')
+        expect(props).to.be.a('array').with.lengthOf(3)
       })
     })
     describe('chain()', function () {

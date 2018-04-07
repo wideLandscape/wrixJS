@@ -8,12 +8,12 @@ describe('Setters', function () {
       it('expect to get setters array', function () {
         const foo = createFoo()
         const setters = Setters.get(foo)
-        expect(setters).to.be.a('array')
+        expect(setters).to.be.a('array').with.lengthOf(2)
       })
       it('expect to get setters array', function () {
         const bar = createBar()
         const setters = Setters.get(bar)
-        expect(setters).to.be.a('array')
+        expect(setters).to.be.a('array').with.lengthOf(3)
       })
     })
     describe('chain()', function () {
