@@ -1,10 +1,10 @@
 import * as Shared from './shared'
 
 export const get = element => {
-  let props = []
+  let props = getGetters(element)
   let prototype = Object.getPrototypeOf(element)
   do {
-    props = props.concat(chainableMethods(prototype, element).filter(p => props.indexOf(p) === -1))
+    props = props.concat(getGetters(prototype).filter(p => props.indexOf(p) === -1))
     prototype = Object.getPrototypeOf(prototype)
   } while (Shared.hasParent(prototype))
   return props
@@ -24,7 +24,7 @@ export const chainAll = (element, getters = get(element), objToChain = {}) => {
   return test
 }
 
-const chainableMethods = element =>
+const getGetters = element =>
   Object.getOwnPropertyNames(element)
     .concat(Object.getOwnPropertySymbols(element).map(s => s.toString()))
     .filter(p => !!Object.getOwnPropertyDescriptor(element, p).get) // only getters

@@ -6,9 +6,10 @@ export const get = (element = {}) => Object.keys(element).filter(key => isSettab
 export const chain = (...args) => {
   return Configurables.chain(...args)
 }
-export const chainAll = (...args) => {
-  return Configurables.chainAll(...args)
+export const chainAll = (element, configurables = get(element), objectToChain = {}) => {
+  return Configurables.chainAll(element, configurables, objectToChain)
 }
+
 const isSettable = (key, element) => {
   const descriptor = Object.getOwnPropertyDescriptor(element, key)
   if (descriptor.configurable) {
