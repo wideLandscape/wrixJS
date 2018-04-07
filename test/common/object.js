@@ -1,7 +1,7 @@
 const fooPrototype = {
   x: 1,
   y: 1,
-  anotherVal: '',
+  _value: '',
   set xy ({ x, y }) {
     this.x = x
     this.y = y
@@ -9,8 +9,8 @@ const fooPrototype = {
   get xy () {
     return ({ x: this.x, y: this.y })
   },
-  set another (val) {
-    this.anotherVal = val
+  set value (val) {
+    this._value = val
   }
 }
 export const createFoo = () => {

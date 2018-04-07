@@ -5,8 +5,8 @@ var Props = require('../src/core/composers/Props')
 describe('Props', function () {
   describe('class object', function () {
     describe('get()', function () {
-      const foo = new Foo()
       it('expect to get properties array', function () {
+        const foo = new Foo()
         const props = Props.get(foo)
         expect(props).to.be.a('array').with.lengthOf(2)
       })
