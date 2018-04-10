@@ -1,7 +1,7 @@
 import * as Setters from './Setters'
 import * as Props from './Props'
 
-export const get = element => Setters.get(element).concat(Props.get(element)) || []
+export const get = element => Setters.get(element).concat(Props.get(element))
 
 export const chain = (element, key, objectToChain) =>
   value => {
