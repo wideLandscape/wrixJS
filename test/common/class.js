@@ -41,4 +41,7 @@ export class Bar extends Foo {
   sum () {
     return this.x + this.y + this.z
   }
+  _privateMethod () {
+    return this.sum()
+  }
 }

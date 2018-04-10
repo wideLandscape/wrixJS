@@ -45,5 +45,8 @@ export const createBar = () => {
   obj.sum = function () {
     return this.x + this.y + this.z
   }
+  obj._privateMethod = function () {
+    return this.sum()
+  }
   return obj
 }
