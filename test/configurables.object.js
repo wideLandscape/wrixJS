@@ -3,7 +3,7 @@ import {createFoo, createBar} from './common/object'
 var expect = require('chai').expect
 var Configurables = require('../src/core/composers/Configurables')
 describe('Configurables', function () {
-  describe('simple object', function () {
+  describe('object', function () {
     describe('get()', function () {
       it('expect to get props and setters array', function () {
         const foo = createFoo()
