@@ -1,6 +1,6 @@
 {
   "name": "wrixjs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Compose wrappers that mix and chains instances with ease",
   "author": "Adriano Costa <iano76@gmail.com>",
   "bugs": "https://github.com/wideLandscape/wrixJS/issues",
