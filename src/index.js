@@ -27,8 +27,8 @@ const wrixPrototype = {
     return this.wrapper
   },
   consume: consume,
-  compose (configurationObject) {
-    this.wrapper = compose(configurationObject)
+  compose (configurationObject, context, includeFn) {
+    this.wrapper = compose(configurationObject, context, includeFn)
   },
   set (config) {
     set(this.wrapper || {}, config)
