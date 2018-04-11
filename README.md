@@ -4,15 +4,18 @@
 
 Compose wrappers that mix and chains instances with ease.
 
-## Description
+## Installation
+
+* Install node.js and npm: https://nodejs.org/en/
+* Run
+
+```npm install wrixjs```
+
+## Usage
 
 TODO
 
-## Installation
-
-### Dependencies
-
-* Install node.js and npm: https://nodejs.org/en/
+## Contribute
 
 ### Clone this repo:
 
@@ -28,11 +31,15 @@ Navigate to the cloned repo's directory.
 
 Run:
 
-```npm install``` 
+```npm install```
 
-## Building/Testing
+### Building
 
-- `npm run build` - builds everything
+- `npm run dev` - dev build with sourcemaps
+- `npm run build` - production build
+
+### Testing
+- `npm run test:self` - a pass/no pass test to ensure mocha/chai works properly
 - `npm test` - runs tests
 
 ## Authors
@@ -41,6 +48,12 @@ Run:
 
 ## Version History
 
+* 0.4.0
+    * add more control over wrix wrap/compose process
+* 0.3.0
+    * wrix utility library is ready
+* 0.2.0
+    * Test Coverage
 * 0.1.0
     * Initial Release
 
