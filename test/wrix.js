@@ -37,7 +37,8 @@ describe('WrixFactory', function () {
   it('creates factories from class', function () {
     const configFactory = {
       key: 'foo',
-      factoryFn: () => new Foo()
+      factoryFn: Foo,
+      type: 'class'
     }
     let wrappedFoo = wrixFactory(configFactory).get('foo', { x: 1, y: 3 })
     expect(wrappedFoo.add(4).foo.y).to.be.equal(7)
@@ -74,8 +75,15 @@ describe('WrixFactory', function () {
     wrappedFoo2.x(5)
     expect(wrappedFoo._context.x).to.be.not.equal(wrappedFoo2._context.x)
   })
+  it('get factory keys', function () {
+    const keys = wrixFactory().keys
+    expect(keys).to.be.a('array').with.lengthOf(5)
+  })
   it('destroy factory', function () {
-    let wrappedFoo = wrixFactory().destroy('fooBehaviour')
-    expect(wrappedFoo.get('fooBehaviour', { x: 1, y: 3 })).to.be.equal(null)
+    const factory = wrixFactory()
+    factory.destroyAll()
+    expect(factory.get('fooBehaviour', { x: 1, y: 3 })).to.be.equal(null)
+    const keys = factory.keys
+    expect(keys).to.be.a('array').with.lengthOf(0)
   })
 })
