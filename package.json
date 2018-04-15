@@ -1,6 +1,6 @@
 {
   "name": "wrixjs",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "WrixJS is builded whit WrixJS: a Javascript lib to compose chainable libs and frameworks.",
   "author": "Adriano Costa <iano76@gmail.com>",
   "bugs": "https://github.com/wideLandscape/wrixJS/issues",
