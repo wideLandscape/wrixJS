@@ -13,6 +13,41 @@ describe('wrix', function () {
     expect(wrixFooRef.wrix()).to.be.not.equal(wrixBarRef.wrix())
     expect(wrixFooRef).to.be.equal(anotherWrixFooRef)
   })
+  it('wraps instance passed as argument', function () {
+    const bar = createBar()
+    let sum = wrix(bar).z(1).x(3).y(5).sum()
+    expect(sum).to.be.equal(9)
+  })
+  it('wraps instances', function () {
+    const example = {
+      x: 1,
+      y: 1,
+      sum () {
+        return this.x + this.y
+      }
+    }
+    let wrixExample = wrix(example) // same as wrix().wrap(Object.create(example)).wrix()
+    expect(wrixExample.x(2)
+      .y(4)
+      .sum() // 6
+    ).to.be.equal(6)
+    expect(example.y).to.be.equal(1)
+  })
+  it('wraps static object', function () {
+    const example = {
+      x: 1,
+      y: 1,
+      sum () {
+        return this.x + this.y
+      }
+    }
+    let wrixExample = wrix(example, false) // same as wrix().wrap(example).wrix()
+    expect(wrixExample.x(2)
+      .y(4)
+      .sum() // 6
+    ).to.be.equal(6)
+    expect(example.sum()).to.be.equal(6)
+  })
 })
 describe('WrixFactory', function () {
   it('creates factories from object', function () {
