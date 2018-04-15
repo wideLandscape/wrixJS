@@ -21,10 +21,10 @@ export const createFoo = () => {
   // has no __proto__
   return Object.create(fooPrototype)
 }
-export const createBar = () => {
+export const createFap = (x, y, z) => {
   // has __proto__
-  let obj = {x: 1, y: 1}
-  obj.z = 1
+  let obj = {x: x, y: y}
+  obj.z = z
   Object.defineProperty(obj, 'xyz', {
     set: function ({ x, y, z }) {
       this.x = x
@@ -50,3 +50,4 @@ export const createBar = () => {
   }
   return obj
 }
+export const createBar = ({ x = 1, y = 1, z = 1 } = {}) => createFap(x, y, z)

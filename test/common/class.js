@@ -1,7 +1,7 @@
 export class Foo {
-  constructor () {
-    this.x = 1
-    this.y = 1
+  constructor (x = 1, y = 1) {
+    this.x = x
+    this.y = y
   }
   set xy ({x, y}) {
     this.x = x
@@ -19,9 +19,9 @@ export class Foo {
   }
 }
 export class Bar extends Foo {
-  constructor () {
-    super()
-    this.z = 1
+  constructor (x = 1, y = 1, z = 1) {
+    super(x, y)
+    this.z = z
   }
   set xy ({x, y, z}) {
     this.xyz = {x, y, z}
