@@ -1,5 +1,6 @@
 import { compose } from './core/compose'
 import { consume } from './core/consume'
+import { createInstance } from './core/createInstance'
 import { wrix } from './wrix'
 export const wrixFactory = configFactory => configFactory
   ? instance.create(configFactory)
@@ -7,9 +8,17 @@ export const wrixFactory = configFactory => configFactory
 
 const wrixFactoryPrototype = {
   _factories: {},
-  create ({ key, factoryFn, factoryArgs, behaviours, keyContext }) {
+  /*
+key: key to register/get/destroy the factory
+type: type of factory function: object, class, static (default: object)
+factoryFn: function to pull instances to wrap
+factoryArgs: list of args to pass to the factory function
+behaviours: list of methods(wrappedInstance, wrapper) to add to the wrapper
+keyContext: prop name to access wrapped instance (default: key)
+  */
+  create ({ key, type, factoryFn, factoryArgs, behaviours, keyContext }) {
     if (!this._factoryExists(key)) {
-      this._factories[key] = createFactory(factoryFn, keyContext || key, factoryArgs, behaviours)
+      this._factories[key] = createFactory(factoryFn, type, keyContext || key, factoryArgs, behaviours)
     }
   },
   get (factoryName, config) {
@@ -23,15 +32,19 @@ const wrixFactoryPrototype = {
   },
   _factoryExists (factoryName) {
     return this._factories[factoryName] !== undefined
+  },
+  get keys () {
+    return Object.keys(this._factories)
+  },
+  destroyAll () {
+    this.keys.forEach(element => this.destroy(element))
   }
 }
 
-const instance = compose({ methods: wrixFactoryPrototype }, { factory: wrixFactoryPrototype })
-
-const createFactory = (factoryFn = noop, keyContext = '_', factoryArgs = null, behaviours = null) =>
+const createFactory = (factoryFn, type, keyContext = '_', factoryArgs = null, behaviours = null) =>
   (config = {}) => {
     let consumable = consume(config)
-    let obj = createObjectToWrap(factoryFn, factoryArgs, consumable)
+    let obj = createInstance(type, factoryFn, factoryArgs, consumable)
     let context = getContext(keyContext, obj)
     return (Array.isArray(behaviours)
       ? wrix()
@@ -41,10 +54,8 @@ const createFactory = (factoryFn = noop, keyContext = '_', factoryArgs = null, b
       .set(consumable.$consumed)
       .wrix()
   }
-const createObjectToWrap = (factoryFn, factoryArgs, consumable) => {
-  let obj = factoryArgs ? factoryFn(...parseArgs(factoryArgs, consumable)) : factoryFn(consumable)
-  return obj
-}
+const instance = compose({ methods: wrixFactoryPrototype, getters: wrixFactoryPrototype }, { factory: wrixFactoryPrototype })
+
 const createBehaviours = (behaviours, element) => {
   let obj = {}
   behaviours.forEach(behaviour => Object.assign(obj, behaviour(element, obj)))
@@ -58,15 +69,3 @@ const getContext = (key, obj) => {
   }
   return context
 }
-
-const parseArgs = (args = [], consumable) => {
-  let factoryArgs = []
-  let item
-  args.forEach(key => {
-    item = consumable[key]
-    factoryArgs.push(item === undefined ? null : item)
-  })
-  return factoryArgs
-}
-
-const noop = () => { }
