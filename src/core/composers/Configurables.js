@@ -9,9 +9,8 @@ export const chain = (element, key, objectToChain) =>
     return objectToChain
   }
 
-export const chainAll = (element, configurables = get(element), objectToChain = {}) => {
-  return configurables.reduce((acc, key) => {
+export const chainAll = (element, configurables = get(element), objectToChain = {}) =>
+  configurables.reduce((acc, key) => {
     acc[key] = chain(element, key, acc)
     return acc
   }, objectToChain)
-}

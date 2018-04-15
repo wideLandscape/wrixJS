@@ -56,11 +56,8 @@ const createFactory = (factoryFn, type, keyContext = '_', factoryArgs = null, be
   }
 const instance = compose({ methods: wrixFactoryPrototype, getters: wrixFactoryPrototype }, { factory: wrixFactoryPrototype })
 
-const createBehaviours = (behaviours, element) => {
-  let obj = {}
-  behaviours.forEach(behaviour => Object.assign(obj, behaviour(element, obj)))
-  return obj
-}
+const createBehaviours = (behaviours, element) =>
+  behaviours.reduce((obj, behaviour) => Object.assign(obj, behaviour(element, obj)), {})
 
 const getContext = (key, obj) => {
   let context = {}
