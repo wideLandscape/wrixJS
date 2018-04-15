@@ -2,8 +2,8 @@ import { compose } from './core/compose'
 import { consume } from './core/consume'
 import { wrix } from './wrix'
 export const wrixFactory = configFactory => configFactory
-  ? compose({ methods: wrixFactoryPrototype }, {factory: wrixFactoryPrototype}).create(configFactory)
-  : compose({ methods: wrixFactoryPrototype }, {factory: wrixFactoryPrototype})
+  ? instance.create(configFactory)
+  : instance
 
 const wrixFactoryPrototype = {
   _factories: {},
@@ -13,14 +13,20 @@ const wrixFactoryPrototype = {
     }
   },
   get (factoryName, config) {
+    return this._factoryExists(factoryName) ? this._factories[factoryName](config) : null
+  },
+  destroy (factoryName) {
     if (this._factoryExists(factoryName)) {
-      return this._factories[factoryName](config)
+      this._factories[factoryName] = null
+      delete this._factories[factoryName]
     }
   },
   _factoryExists (factoryName) {
     return this._factories[factoryName] !== undefined
   }
 }
+
+const instance = compose({ methods: wrixFactoryPrototype }, { factory: wrixFactoryPrototype })
 
 const createFactory = (factoryFn = noop, keyContext = '_', factoryArgs = null, behaviours = null) =>
   (config = {}) => {
