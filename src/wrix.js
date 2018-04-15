@@ -2,7 +2,7 @@ import { compose, wrap } from './core/compose'
 import { set } from './core/set'
 import { consume } from './core/consume'
 
-export const wrix = () => wrap(Object.create(wrixPrototype))
+export const wrix = () => compose({methods: Object.create(wrixPrototype)})
 const wrixPrototype = {
   wrapper: null,
   consume: consume,
