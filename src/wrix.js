@@ -3,8 +3,8 @@ import { set } from './core/set'
 import { consume } from './core/consume'
 
 export const wrix = (toWrap, istantiate = true) => toWrap
-  ? instance.wrap(istantiate ? Object.create(toWrap) : toWrap).wrix()
-  : instance
+  ? createWrix().wrap(istantiate ? Object.create(toWrap) : toWrap).wrix()
+  : createWrix()
 const wrixPrototype = {
   wrapper: null,
   consume: consume,
@@ -22,4 +22,3 @@ const wrixPrototype = {
   }
 }
 const createWrix = () => compose({ methods: Object.create(wrixPrototype) })
-const instance = createWrix()
