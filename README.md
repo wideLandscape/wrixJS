@@ -39,6 +39,9 @@ console.log(wrixExample.x(2)
                        .y(4)
                        .sum()) // 6
 console.log(example.y) // 1
+```
+```javascript
+import { wrix } from wrixJS
 
 // wrap uninstantiated object
 let wrixExample = wrix(example, false) // same as wrix().wrap(example).wrix()
@@ -67,6 +70,34 @@ configutationObject has these properties:
 * factoryArgs: list of args to pass to the factory function (optional)
 * behaviours: list of methods(wrappedInstance, wrapper) to add to the wrapper (optional)
 
+```javascript
+import { wrixFactory } from wrixJS
+import Foo from './foo'
+const example = {
+  x:1,
+  y:1,
+  sum(){
+    return this.x + this.y
+  }
+}
+
+wrixFactory()
+  .create({
+    key: 'example',
+    factoryFn: example
+  })
+  .create({
+    key: 'foo',
+    factoryFn: Foo,
+    type: 'class'
+  })
+// get instance of wrix(example) with configuration
+let wrappedExample = wrixFactory().get('example', { x: 1, y: 3 })
+// get a new Foo() wrapped in a wrix()
+let wrappedFoo = wrixFactory().get('foo')
+console.log(wrappedExample.x(2).sum()) // 5
+
+```
 ```javascript
 import { wrixFactory } from wrixJS
 
@@ -130,8 +161,15 @@ Run:
 
 ## Version History
 
+* 1.0.1
+    * fix wrix()
+    * README.md update
 * 1.0.0
-    * add more control over wrix wrap/compose process
+    * split wrix into wrixFactory() and wrix()
+    * add type to wrixFactory's configurationFactoryObject (object, class, static, prototype)
+    * wrix(object) is a shortcut for wrix().wrap(Object.create(object)).wrix()
+    * wrixFactory(configurationFactoryObj) is a shortcut for wrixFactory().create(configurationFactoryObj)
+    * add destroy(instance) destroyAll(), keys to wrixFactory
 * 0.4.0
     * add more control over wrix wrap/compose process
 * 0.3.0
