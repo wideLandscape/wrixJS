@@ -150,6 +150,7 @@ Run:
 
 - `npm run dev` - dev build with sourcemaps
 - `npm run build` - production build
+- `npm run dist` - production build + source code as you can see in the 'dist' folder.
 
 ### Testing
 - `npm run test:self` - a pass/no pass test to ensure mocha/chai works properly
@@ -161,6 +162,11 @@ Run:
 
 ## Version History
 
+* 1.0.2
+    * the dist folder contains:
+      * wrix.js: the webpacked lib;
+      * src/ folder: wrixJS source code, no minify/uglify. Easy to debug when building your own lib/framework
+      . Recommended.
 * 1.0.1
     * fix wrix()
     * README.md update
@@ -169,7 +175,7 @@ Run:
     * add type to wrixFactory's configurationFactoryObject (object, class, static, prototype)
     * wrix(object) is a shortcut for wrix().wrap(Object.create(object)).wrix()
     * wrixFactory(configurationFactoryObj) is a shortcut for wrixFactory().create(configurationFactoryObj)
-    * add destroy(instance) destroyAll(), keys to wrixFactory
+    * add destroy(instance) destroyAll() methods and 'keys' prop to wrixFactory
 * 0.4.0
     * add more control over wrix wrap/compose process
 * 0.3.0
