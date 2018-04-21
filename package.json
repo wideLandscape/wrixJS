@@ -14,10 +14,12 @@
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
     "mocha": "^5.0.5",
     "standard": "^11.0.1",
     "uglifyjs-webpack-plugin": "^1.2.4",
@@ -28,6 +30,7 @@
   "scripts": {
     "dev": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
+    "dist": "webpack --config webpack.dist.js",
     "test": "mocha --require babel-core/register --grep dumb --invert",
     "test:self": "mocha ./test/testSuite.js"
   },
