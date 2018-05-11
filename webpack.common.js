@@ -13,6 +13,7 @@ module.exports = {
     filename: 'wrix.js',
     library: 'wrix',
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
+    globalObject: 'typeof self !== \'undefined\' ? self : this'
   }
 }
