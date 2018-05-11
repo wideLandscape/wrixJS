@@ -162,6 +162,9 @@ Run:
 
 ## Version History
 
+* 1.0.3
+    * workaround for webpack 4 issue:
+    https://github.com/webpack/webpack/issues/6522
 * 1.0.2
     * the dist folder contains:
       * wrix.js: the webpacked lib;
