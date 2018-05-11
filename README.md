@@ -1,6 +1,6 @@
 # wrixJS
 
-WrixJS is builded whit WrixJS: a Javascript lib to compose chainable libs and frameworks.
+WrixJS is assembled with WrixJS: a Javascript lib to compose chainable libs and frameworks.
 
 You will like it if:
 - you don't like to declare vars only to configure props object
