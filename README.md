@@ -1,3 +1,5 @@
+This is a proof of concept lib. It's not intended to be used in production.
+
 # wrixJS
 
 WrixJS is assembled with WrixJS: a Javascript lib to compose chainable libs and frameworks.
